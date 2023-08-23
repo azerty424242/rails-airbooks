@@ -1,0 +1,18 @@
+<h1><%= @user.first_name %>'s Profile</h1>
+<br>
+
+
+
+<h2>Reservations:</h2>
+<div class="reservations-grid">
+  <% @reservations.each do |reservation| %>
+    <div class="reservation-card <%= 'accepted' if reservation.status == 'accepted' %> <%= 'refused' if reservation.status == 'refused' %>">
+      Book ID: <%= reservation.book_id %><br>
+      Renter ID: <%= reservation.renter_id %><br>
+      Begin Date: <%= reservation.begin_date %><br>
+      End Date: <%= reservation.end_date %><br>
+      Status: <%= reservation.status %><br>
+      Total Price: $<%= reservation.total_price %>
+    </div>
+  <% end %>
+</div>
