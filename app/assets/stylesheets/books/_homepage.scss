@@ -18,11 +18,85 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+// .card img {
+//   width: 200px;
+//   height: 200px; /* Add height to make the container square */
+//   opacity: 70%;
+//   border-radius: 5px 5px 5px 5px;
+//   object-fit: cover;
+// }
+
+// .text_card {
+//   padding: 20px;
+// }
+
+// // .card h4 {
+// //   color: #f2b724;
+// // }
+// .card p {
+//   opacity: 0.5;
+// }
+
+// .card {
+//   width: 200px;
+//   border-radius: 10px 10px 0 0;
+//   box-shadow: 0 0 5px rgb(230,230,230);
+//   border: 1px solid rgb(230,230,230);
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: flex-start;
+//   text-align: center;
+// }
+
+// .cards {
+//   border-radius: 10px 10px 10px 10px;
+//   display: flex;
+//   justify-content: space-between;
+//   flex-wrap: wrap;
+// }
+
+
+// a {
+//   text-decoration: none;
+// }
+
+// .text-center {
+//   text-align: center;
+// }
+
+
+
+
+
+
+
+
+
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centrer horizontalement les cartes */
+  gap: 20px; /* Ajouter un espacement entre les cartes */
+}
+
+.card {
+  flex: 1; /* Permet aux cartes de s'étirer pour remplir l'espace disponible */
+  max-width: 300px; /* Limiter la largeur maximale des cartes */
+  margin: 10px; /* Ajouter une marge autour des cartes */
+  box-shadow: 0 0 5px rgb(230, 230, 230);
+  border: 1px solid rgb(230, 230, 230);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .card img {
-  width: 200px;
-  height: 200px; /* Add height to make the container square */
-  opacity: 70%;
-  border-radius: 5px 5px 5px 5px;
+  width: 100%;
+  max-height: 200px; /* Limiter la hauteur maximale de l'image */
+  border-radius: 5px 5px 0 0;
   object-fit: cover;
 }
 
@@ -30,40 +104,20 @@
   padding: 20px;
 }
 
-// .card h4 {
-//   color: #f2b724;
-// }
 .card p {
-  opacity: 0.5;
+  opacity: 0.7; /* Légèrement augmenter l'opacité du texte */
 }
 
-.card {
-  width: 200px;
-  border-radius: 10px 10px 0 0;
-  box-shadow: 0 0 5px rgb(230,230,230);
-  border: 1px solid rgb(230,230,230);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: center;
+.card h4 {
+  margin-top: 10px; /* Ajouter un espacement entre le texte et l'image */
+  color: #f2b724;
 }
-
-.cards {
-  border-radius: 10px 10px 10px 10px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-
-a {
+/* Annuler les styles par défaut des liens générés par link_to */
+.card a, .card a:hover {
   text-decoration: none;
+  color: inherit;
 }
 
-.text-center {
-  text-align: center;
-}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
