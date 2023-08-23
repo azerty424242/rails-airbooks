@@ -1,5 +1,6 @@
 .background-container {
   position: relative;
+  min-height: 50vh; /* Minimum de 50% de la hauteur de la vue */
 }
 
 .background-image {
@@ -13,7 +14,7 @@
   background-size: cover;
   background-position: center center;
   opacity: 0.2;
-  z-index: -1; /* Positionner l'arrière-plan en dessous du contenu */
+  z-index: -1;
 }
 
 /* Vos autres styles pour les éléments du livre */
