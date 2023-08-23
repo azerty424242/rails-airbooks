@@ -1,2 +1,40 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1531988042231-d39a9cc12a9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGJvb2tzfGVufDB8fDB8fHww&w=1000&q=80);">
+  <div class="container">
+    <h1>Airbook brings <strong> books</strong> to <strong>your home</strong></h1>
+    <p>Rent a book to travel through different world </p>
+     <%= link_to "Book now", books_path, class: " btn btn-info m-2"  %>
+  </div>
+</div>
+
+<div class="container">
+    <h2 class="text-center mt-4"> </h2>
+    <div class="cards">
+
+      <div class="card">
+        <%= image_tag ("card1.jpg") %>
+        <div class="text_card"><h4> Books </h4>
+          <p> Find you dream book </p>
+        </div>
+      </div>
+
+      <div class="card">
+       <%= image_tag ("books.jpg") %>
+        <div class="text_card"><h4> Rent </h4>
+          <p> Add your own books</p></div>
+      </div>
+
+      <div class="card">
+        <%= image_tag ("books2card.jpg") %>
+        <div class="text_card"><h4> Earn money  </h4>
+        <p> Earn money by renting your old books</p></div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer">
+    <div class="links">
+      <a href="#"><i class="fa-brands fa-instagram" style="color: #0E0000;"></i></a>
+      <a href="#"><i class="fa-brands fa-square-facebook" style="color: #0E0000;"></i></a>
+      <p><i class="fa-solid fa-sun fa-beat" style="color: #e9c46a;"></i> Follow us. <i class="fa-solid fa-sun fa-beat" style="color: #e9c46a;"></i> </p>
+    </div>
+  </div>
