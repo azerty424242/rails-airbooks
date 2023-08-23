@@ -17,9 +17,9 @@
   z-index: -1;
 }
 
-/* Vos autres styles pour les éléments du livre */
+/* Styles spécifiques pour l'image du livre */
 .book-image {
-  max-width: 75%;
+  height: 500px; /* La hauteur de l'image prendra la hauteur de son conteneur */
   border: 1px solid black;
   margin-left: -20px;
 }
