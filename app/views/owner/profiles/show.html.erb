@@ -21,12 +21,42 @@
       <strong>Pending Reservations: </strong><span>0</span>
     </div>
 
-    <!-- Wish List Card -->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- BOOKMARKS -->
     <div class="wish-list-card">
       <h3>My Bookmarks ❤️</h3>
-      <!-- TODO. -->
+      <% if @bookmarks.any? %>
+        <ul style="list-style-type: none;">
+          <% @bookmarks.each do |bookmark| %>
+            <li>
+              <%= link_to bookmark_path(bookmark), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, class: "delete-icon" do %>
+                <i class="fa-solid fa-trash" style="color: #18284e;"></i>
+              <% end %>
+              <%= bookmark.book.title %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>You have no bookmarks.</p>
+      <% end %>
     </div>
   </div>
+
+
+
+
+
+
 
 
 
@@ -72,3 +102,4 @@
       </div>
     <% end %>
   </div>
+</div>

@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :books, foreign_key: :owner_id
   has_many :reservations, foreign_key: :renter_id
+  has_many :bookmarks, dependent: :destroy
 
   has_one_attached :avatar
 end

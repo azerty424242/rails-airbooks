@@ -5,5 +5,8 @@ class Owner::ProfilesController < ApplicationController
     @reservations = current_user.reservations.includes(:book)
     @user = current_user
     @reservations = @user.reservations
+    @bookmarks = @user.bookmarks
   end
 end
+
+
