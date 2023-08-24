@@ -1,14 +1,19 @@
 <div class="container mt-5">
-  <h1>Books</h1>
+  <h1>All Books</h1>
 
   <div class="books-grid">
     <% @books.each do |book| %>
       <div class="book-card">
-        <div class="book-cover">
-          <img src=<%= book.cover.url %> alt="Cover for <%= book.title %>">
-        </div>
+        <%= link_to book_path(book) do %>
+          <div class="book-cover">
+            <img src=<%= book.cover.url %> alt="Cover for <%= book.title %>">
+          </div>
+        <% end %>
         <div class="book-details">
-          <h5 class="book-category"><%= book.category %></h5>
+          <div class="category-bookmark-wrapper">
+            <h5 class="book-category"><%= book.category %></h5>
+            <i class="fa-solid fa-bookmark bookmark-icon"></i>
+          </div>
           <h4 class="book-title"><%= book.title %></h4>
           <div class="book-text">
             <p class="book-author"><%= book.author_name %></p>
@@ -16,9 +21,6 @@
             <%#= book.price_per_day %>
             <%#= book.description.truncate(100) %>
           </div>
-        </div>
-        <div class="book-footer">
-            <%= link_to 'Discover the book', book_path(book), class: 'btn btn-info' %>
         </div>
       </div>
     <% end %>
