@@ -1,0 +1,42 @@
+.reservations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* This will allow the cards to wrap onto the next line when the screen width is reduced. */
+  gap: 30px; /* Increased space between the cards for better visual separation */
+  padding: 0;
+  list-style: none;
+}
+
+.reservation-card {
+  padding: 30px; /* Increased padding for more spacing inside each card */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.reservation-card:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) { /* You can adjust this breakpoint as necessary. */
+  .reservations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* On small screens, cards take up full width */
+  }
+
+  .reservation-card {
+    padding: 20px; /* Reduced padding on smaller screens */
+  }
+}
+
+
+
+.reservation-card.accepted {
+  background-color: #e6ffe6;  /* A light green */
+  border: 1px solid #00cc44;  /* A darker green for the border */
+}
+
+.reservation-card.refused {
+  background-color: #ffe6e6;  /* A light red */
+  border: 1px solid #cc0000;  /* A darker red for the border */
+}
