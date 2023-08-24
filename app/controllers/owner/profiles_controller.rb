@@ -3,5 +3,7 @@ class Owner::ProfilesController < ApplicationController
 
   def show
     @reservations = current_user.reservations.includes(:book)
+    @user = current_user
+    @reservations = @user.reservations
   end
 end
