@@ -26,15 +26,19 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" data-controller="calcul">
     <%= simple_form_for([@book, Reservation.new]) do |f| %>
         <%= f.input :begin_date,
                     as: :string,
-                    input_html: { data: { controller: "datepicker" } }%>
+                    input_html: { data: { controller: "datepicker", calcul_target:"begin_date", action: "change->calcul#refresh" } }%>
         <%= f.input :end_date,
                     as: :string,
-                    input_html: { data: { controller: "datepicker" } }%>
-        <%= f.input :total_price %>
+                    input_html: { data: { controller: "datepicker", calcul_target:"end_date", action: "change->calcul#refresh" } }%>
         <%= f.submit class:"btn btn-primary" %>
     <% end %>
 </div>
+
+
+  <div class="container" data-calcul-target>
+      <p> <i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i> €</p>
+  </div>
