@@ -23,52 +23,45 @@
 
     <!-- Wish List Card -->
     <div class="wish-list-card">
+
       <h3>My Bookmarks ❤️</h3>
       <!-- TODO. -->
     </div>
   </div>
+</div>
 
 
-
-
-  <div class="books-header">
-    <h2>Books that I rent</h2>
-    <%= link_to 'Rent a new book', new_owner_book_path, class: 'rent-books-btn' %>
-  </div>
-
-  <div class="owned-books-card">
+<div class="books-header">
+    <h2>Books that I read</h2>
+</div>
+<div class="owned-books-card">
     <div class="owned-books-grid">
-      <% current_user.books.each do |book| %>
+      <% @rented_books.each do |book| %>
         <div class="owned-book-card">
-          <div class="d-flex justify-content-center">
-            <%= image_tag(book.cover.url, alt: book.title, class: 'book-cover-user') %>
-          </div>
+          <%= image_tag(book.cover.url, alt: book.title, class: 'book-cover-user') %>
+          <h2><%= book.title %></h2>
+          <p class ="price"> <%= book.price_per_day %> euros</p>
+          <p>
+              <%= content_tag(:strong, "From") %>
+              <%= book.reservations.where(renter: current_user).pluck(:begin_date, :end_date).join(' <strong>to</strong> ').html_safe %>
+            </p>
         </div>
       <% end %>
     </div>
   </div>
 
 
+  <!-- Owned Books -->
 
-
-
-
-  <h2 class="mt-3">My Reservations</h2>
-  <div class="reservations-grid">
-    <% @reservations.each do |reservation| %>
-      <div class="reservation-card <%= 'accepted' if reservation.status == 'accepted' %> <%= 'refused' if reservation.status == 'refused' %>">
-        <div class="d-flex justify-content-center">
-          <%= image_tag(reservation.book.cover, alt: reservation.book.title, class: 'book-cover-reservation') %>
+  <div class="books-header">
+    <h2> My books online </h2>
+  </div>
+  <div class="owned-books-card">
+    <div class="owned-books-grid">
+      <% current_user.books.each do |book| %>
+        <div class="owned-book-card">
+          <%= image_tag(book.cover.url, alt: book.title, class: 'book-cover-user') %>
         </div>
-        <%#= reservation.book_id %>
-        <%# Instead of book_id, let's display book name using .includes in the controller:
-        profiles_controller#show ==> @reservations = current_user.reservations.includes(:book) %>
-        <strong>Book Name:</strong> <%= reservation.book.title %><br>
-        <strong>Renter Name:</strong> <%= reservation.renter.first_name %> <%= reservation.renter.last_name %><br>
-        <strong>Begin Date:</strong> <%= reservation.begin_date %><br>
-        <strong>End Date:</strong> <%= reservation.end_date %><br>
-        <strong>Total Price:</strong> $<%= reservation.total_price %><br>
-        <%#= reservation.status %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
