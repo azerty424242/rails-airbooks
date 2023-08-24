@@ -195,3 +195,26 @@
 .rent-books-btn:hover {
   background-color: #bebebe;
 }
+
+
+
+
+
+
+.delete-icon:hover .fa-solid.fa-trash {
+  color: #c22424;
+  animation: bounce 1s infinite; /* if fa-bounce doesn't exist, this will create the bounce effect */
+}
+
+/* Add this if fa-bounce isn't a class provided by Font Awesome */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-10px);
+  }
+  60% {
+      transform: translateY(-5px);
+  }
+}

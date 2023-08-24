@@ -1,7 +1,6 @@
 <div class="main-container">
 
   <div class="profile-section">
-
     <!-- Profile Card -->
     <div class="profile-card">
       <%= image_tag(current_user.avatar.url, alt: current_user.first_name, class: 'user-avatar') %>
@@ -21,37 +20,48 @@
       <strong>Pending Reservations: </strong><span>0</span>
     </div>
 
-    <!-- Wish List Card -->
+    <!-- Booksmarks -->
     <div class="wish-list-card">
-
       <h3>My Bookmarks ❤️</h3>
-      <!-- TODO. -->
-    </div>
-  </div>
-</div>
-
-
-<div class="books-header">
-    <h2>Books that I read</h2>
-</div>
-<div class="owned-books-card">
-    <div class="owned-books-grid">
-      <% @rented_books.each do |book| %>
-        <div class="owned-book-card">
-          <%= image_tag(book.cover.url, alt: book.title, class: 'book-cover-user') %>
-          <h2><%= book.title %></h2>
-          <p class ="price"> <%= book.price_per_day %> euros</p>
-          <p>
-              <%= content_tag(:strong, "From") %>
-              <%= book.reservations.where(renter: current_user).pluck(:begin_date, :end_date).join(' <strong>to</strong> ').html_safe %>
-            </p>
-        </div>
+      <% if @bookmarks.any? %>
+        <ul style="list-style-type: none;">
+          <% @bookmarks.each do |bookmark| %>
+            <li>
+              <%= link_to bookmark_path(bookmark), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, class: "delete-icon" do %>
+                <i class="fa-solid fa-trash" style="color: #18284e;"></i>
+              <% end %>
+              <%= bookmark.book.title %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>You have no bookmarks.</p>
       <% end %>
-    </div>
+    </div> 
   </div>
 
 
-  <!-- Owned Books -->
+  <div class="books-header">
+      <h2>Books that I read</h2>
+  </div>
+  <div class="owned-books-card">
+      <div class="owned-books-grid">
+        <% @rented_books.each do |book| %>
+          <div class="owned-book-card">
+            <%= image_tag(book.cover.url, alt: book.title, class: 'book-cover-user') %>
+            <h2><%= book.title %></h2>
+            <p class ="price"> <%= book.price_per_day %> euros</p>
+            <p>
+                <%= content_tag(:strong, "From") %>
+                <%= book.reservations.where(renter: current_user).pluck(:begin_date, :end_date).join(' <strong>to</strong> ').html_safe %>
+              </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+
 
   <div class="books-header">
     <h2> My books online </h2>
@@ -65,3 +75,4 @@
       <% end %>
     </div>
   </div>
+</div>

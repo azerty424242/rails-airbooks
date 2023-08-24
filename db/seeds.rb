@@ -1,7 +1,9 @@
 puts "Cleaning database..."
 Reservation.destroy_all
+Bookmark.destroy_all
 Book.destroy_all
 User.destroy_all
+
 
 
 
@@ -303,5 +305,24 @@ Reservation.create!(
   total_price: 55,
   status:      "accepted"
 )
+
+
+
+
+
+puts "Creating bookmarks..."
+
+Bookmark.create!(user: alice, book: orwell_1984)
+Bookmark.create!(user: alice, book: the_little_prince)
+
+Bookmark.create!(user: bob, book: dune)
+
+puts "Bookmarks created!"
+
+
+
+
+
+
 
 puts "Finished!"
