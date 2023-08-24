@@ -10,17 +10,34 @@
 
       <div class="col-md-7 order-md-2">
         <div class="book-title">
-          <h1><%= @book.title %></h1>
+          <h1><strong><%= @book.title %><strong></h1>
         </div>
         <div class="book-info">
           <div class="vertical-divider"></div>
-          <p class="book-author"><strong>Author:</strong> <%= @book.author_name %></p>
-          <p><strong>Published year:</strong> <%= @book.published_year %></p>
-          <p><strong>Description:</strong> <%= @book.description %></p>
-          <p><strong>Category:</strong> <%= @book.category %></p>
-          <p><strong>Price per day:</strong> <%= @book.price_per_day %> EUR</p>
+          <h3><i class="fa-solid fa-user" style="color: #F8C933;"> </i><%= @book.author_name %></h3>
+          <h3><i class="fa-regular fa-clock" style="color: #F8C933;"> </i> <%= @book.published_year %></h3>
+          <h3><i class="fa-solid fa-book-open" style="color: #F8C933;"> </i><%= @book.description %></h3>
+          <h3><i class="fa-solid fa-pen-nib" style="color: #F8C933;"></i>   </i><%= @book.category %></h3>
+          <h3><i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i><%= @book.price_per_day %>€</h3>
+          <%= link_to "Book me",'#', class: " btn btn-info m-2"  %>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+
+
+
+<div class="container">
+    <%= simple_form_for([@book, Reservation.new]) do |f| %>
+        <%= f.input :begin_date,
+                    as: :string,
+                    input_html: { data: { controller: "datepicker" } }%>
+        <%= f.input :end_date,
+                    as: :string,
+                    input_html: { data: { controller: "datepicker" } }%>
+        <%= f.input :total_price %>
+        <%= f.submit class:"btn btn-primary" %>
+    <% end %>
 </div>
