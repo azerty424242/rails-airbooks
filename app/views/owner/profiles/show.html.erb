@@ -14,15 +14,16 @@
 
     <!-- Reservations Summary Card -->
     <div class="reservations-summary-card">
-      <h3>Reservations Summary</h3>
-      <strong>Accepted Reservations:</strong> <%= current_user.reservations.where(status: 'accepted').count %><br>
-      <strong>Refused Reservations:</strong> <%= current_user.reservations.where(status: 'refused').count %><br>
-      <strong>Pending Reservations: </strong><span>0</span>
+      <h3>Reservations Summary <i class="fa-solid fa-check" style="color: #e5c706;"></i></h3>
+      <p>Accepted Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i> <%= current_user.reservations.where(status: 'accepted').count %><br>
+      Refused Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i> <%= current_user.reservations.where(status: 'refused').count %><br>
+      Pending Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i>  <span>0</span>
+      </p>
     </div>
 
     <!-- Booksmarks -->
     <div class="wish-list-card">
-      <h3>My Bookmarks ❤️</h3>
+      <h3>My Bookmarks <i class="fa-regular fa-heart" style="color: #e5c706;"></i> </h3>
       <% if @bookmarks.any? %>
         <ul style="list-style-type: none;">
           <% @bookmarks.each do |bookmark| %>
@@ -37,12 +38,12 @@
       <% else %>
         <p>You have no bookmarks.</p>
       <% end %>
-    </div> 
+    </div>
   </div>
 
 
   <div class="books-header">
-      <h2>Books that I read</h2>
+      <h2>Books that I read <i class="fa-brands fa-readme" style="color: #e5c706;"></i></h2>
   </div>
   <div class="owned-books-card">
       <div class="owned-books-grid">
@@ -52,8 +53,8 @@
             <h2><%= book.title %></h2>
             <p class ="price"> <%= book.price_per_day %> euros</p>
             <p>
-                <%= content_tag(:strong, "From") %>
-                <%= book.reservations.where(renter: current_user).pluck(:begin_date, :end_date).join(' <strong>to</strong> ').html_safe %>
+                <% last_booking = book.reservations.where(renter: current_user).last %>
+                <%= "From #{last_booking.begin_date} to #{last_booking.end_date}" %>
               </p>
           </div>
         <% end %>
@@ -61,16 +62,16 @@
     </div>
 
 
-
-
   <div class="books-header">
-    <h2> My books online </h2>
+    <h2> My books online <i class="fa-solid fa-globe" style="color: #e5c706;" ></i> </h2>
   </div>
   <div class="owned-books-card">
     <div class="owned-books-grid">
-      <% current_user.books.each do |book| %>
+      <% @owner_books.each do |book| %>
         <div class="owned-book-card">
           <%= image_tag(book.cover.url, alt: book.title, class: 'book-cover-user') %>
+           <h2><%= book.title %></h2>
+          <p> Last date <%= book.reservations.last.end_date unless book.reservations.empty?%> </p>
         </div>
       <% end %>
     </div>
