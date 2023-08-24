@@ -4,8 +4,12 @@ class BookmarksController < ApplicationController
 
   def create
     @book = Book.find(params[:book_id])
-    # raise
     @bookmark = Bookmark.new(user: current_user, book: @book)
+    # @bookmark.user = current_user
+    # @bookmark.book = @book
+    # NE PAS ENLEVER PLEASE !!! J'en ai besoin pour bien comprendre
+    # NB: On sait qu'on a besoin de ces 2 variables par / à la join table
+
 
     if @bookmark.save
       flash[:notice] = "Bookmarked successfully!"
