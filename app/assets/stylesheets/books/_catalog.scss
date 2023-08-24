@@ -1,7 +1,7 @@
 .books-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 20px;
+  gap: 30px;
 
   @media (min-width: 576px) {
     grid-template-columns: repeat(2, 1fr);
@@ -11,7 +11,7 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 900px) {
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -28,6 +28,7 @@
   height: 200px;
   overflow: hidden;
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   background-color: rgb(172, 172, 172);
@@ -52,14 +53,41 @@
 .book-author,
 .book-year {
   margin: 0;
-  color: grey;
+  color: rgb(60, 60, 60);
 }
 
 .book-category {
   color: grey;
+  text-transform: capitalize;
 }
 
 .book-footer {
   padding: 10px;
   text-align: center;
+}
+
+
+
+
+
+
+
+
+.bookmark-icon {
+  font-size: 32px;
+  cursor: pointer;
+  color: #bababa;
+  transition: color 0.3s ease;
+}
+
+.bookmark-icon:hover {
+  color: #DAA520;
+}
+
+
+
+.category-bookmark-wrapper {
+  display: flex;
+  align-items: center; /* Vertically centers items in case they're of different heights */
+  justify-content: space-between; /* Maximizes space between items. Adjust as needed. */
 }
