@@ -113,7 +113,7 @@
   color: #f2b724;
 }
 /* Annuler les styles par défaut des liens générés par link_to */
-.card a, .card a:hover {
+.card , .card a:hover {
   text-decoration: none;
   color: inherit;
 }
