@@ -19,14 +19,19 @@
       </div>
     <% end %>
 
+    <%= link_to new_owner_book_path do  %>
       <div class="card">
        <%= image_tag ("books.jpg") %>
         <div class="text_card"><h4> Rent </h4>
           <p> Add your own books</p></div>
       </div>
+    <% end %>
 
+
+    <%= link_to owner_profile_path do  %>
       <div class="card">
         <%= image_tag ("books2card.jpg") %>
         <div class="text_card"><h4> Earn money  </h4>
         <p> Earn money with your old books</p></div>
       </div>
+    <% end %>
