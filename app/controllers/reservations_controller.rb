@@ -1,14 +1,14 @@
 class ReservationsController < ApplicationController
-  def new
-    @reservation = Reservation.new()
-  end
 
   def create
-    @book = Book.new(reservation_params)
-    if @book.save
-        redirect_to books_path
+    @book = Book.find(params[:book_id])
+    @reservation = Reservation.new(reservation_params)
+    @reservation.book = @book
+    @reservation.renter = current_user
+    if @reservation.save!
+      redirect_to books_path
     else
-        render :new, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
   end
 
