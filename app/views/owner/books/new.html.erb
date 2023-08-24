@@ -1,0 +1,24 @@
+<div class="container d-flex justify-content-center">
+  <div class="row">
+    <!-- Column with the book image -->
+    <div class="col-md-6 d-flex justify-content-center px-3">
+      <%= image_tag('new-book-2.jpg', alt: 'New Book Image', class: 'img-fluid') %>
+    </div>
+
+    <!-- Column for the form -->
+    <div class="col-md-6 px-3">
+      <h3>Add New Book</h3>
+
+      <%= simple_form_for [@book] do |f| %>
+        <%= f.input :title, placeholder: 'Title' %>
+        <%= f.input :author_name, placeholder: 'Author' %>
+        <%= f.input :description, placeholder: 'Description' %>
+        <%= f.input :published_year, placeholder: 'Published Year' %>
+        <%= f.input :category, placeholder: 'Category' %>
+        <%= f.input :price_per_day, placeholder: 'Price per day' %>
+        <%= f.input :cover, as: :file %>
+        <%= f.button :submit, 'Add Book', class: 'btn btn-info' %>
+      <% end %>
+    </div>
+  </div>
+</div>
