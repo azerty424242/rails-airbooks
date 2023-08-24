@@ -18,7 +18,8 @@
           <h3><i class="fa-regular fa-clock" style="color: #F8C933;"> </i> <%= @book.published_year %></h3>
           <h3><i class="fa-solid fa-book-open" style="color: #F8C933;"> </i><%= @book.description %></h3>
           <h3><i class="fa-solid fa-pen-nib" style="color: #F8C933;"></i>   </i><%= @book.category %></h3>
-          <h3><i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i><%= @book.price_per_day %>€</h3>
+          <h3 data-calcul-target="price_per_day" data-price-per-day="<%= @book.price_per_day %>">
+            <i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i><%= @book.price_per_day %>€
           <%= link_to "Book me", "#", class: " btn btn-info m-2"  %>
         </div>
       </div>
@@ -39,6 +40,6 @@
 </div>
 
 
-  <div class="container" data-calcul-target>
-      <p> <i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i> €</p>
-  </div>
+ <div class="container" data-calcul-target>
+  <p><i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i> <span data-target="calcul.total_price"></span> 0€</p>
+</div>
