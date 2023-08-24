@@ -19,9 +19,25 @@
           <h3><i class="fa-solid fa-book-open" style="color: #F8C933;"> </i><%= @book.description %></h3>
           <h3><i class="fa-solid fa-pen-nib" style="color: #F8C933;"></i>   </i><%= @book.category %></h3>
           <h3><i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i><%= @book.price_per_day %>€</h3>
-          <%= link_to "Book me", "#", class: " btn btn-info m-2"  %>
+          <%= link_to "Book me",'#', class: " btn btn-info m-2"  %>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+
+
+
+<div class="container">
+    <%= simple_form_for([@book, Reservation.new]) do |f| %>
+        <%= f.input :begin_date,
+                    as: :string,
+                    input_html: { data: { controller: "datepicker" } }%>
+        <%= f.input :end_date,
+                    as: :string,
+                    input_html: { data: { controller: "datepicker" } }%>
+        <%= f.input :total_price %>
+        <%= f.submit class:"btn btn-primary" %>
+    <% end %>
 </div>
