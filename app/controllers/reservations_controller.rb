@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
     @reservation.status = "pending"
     @reservation.total_price = calcul
     if @reservation.save!
-      redirect_to books_path
+      redirect_to owner_profile_path
     else
       render :show, status: :unprocessable_entity
     end

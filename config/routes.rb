@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :books, only: [:index, :show] do
+  resources :books, only: [:index, :show, :create] do
     resources :reservations, only: [:create]
     resources :bookmarks, only: [:create]
   end
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # OWNERS
   namespace :owner do
     resource :profile, only: [:show]
-    resources :books, only: [:new, :create]
+    resources :books, only: [:new]
 
     resources :reservations, only: [] do
       member do   # used for methods that require specific ID
