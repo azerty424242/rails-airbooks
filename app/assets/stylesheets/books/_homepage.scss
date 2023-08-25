@@ -67,6 +67,26 @@
 //   color: inherit;
 // }
 
+.footer {
+  text-align: center;
+  padding: 60px;
+  margin-top: 40px;
+}
+
+.footer a {
+  font-size: 40px;
+  padding: 10px;
+}
+
+.footer p {
+  color: #6B6C6C;
+}
+
+.fa-beat {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
