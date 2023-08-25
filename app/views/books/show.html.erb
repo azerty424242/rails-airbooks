@@ -2,44 +2,48 @@
   <div class="background-image"></div>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-md-5 order-md-1">
+
+      <!-- DIV LEFT (BOOK COVER) -->
+      <div class="col-md-3">
         <div class="book-poster">
           <%= image_tag @book.cover.url, alt: "Cover Book", class: "img-fluid book-image" %>
         </div>
       </div>
 
-      <div class="col-md-7 order-md-2">
+      <!-- DIV MIDDLE (BOOK INFO) -->
+      <div class="col-md-6">
         <div class="book-title">
-          <h1><strong><%= @book.title %><strong></h1>
+          <h1><strong><%= @book.title %></strong></h1>
         </div>
-        <div class="book-info">
+        <div class="book-info-card">
           <div class="vertical-divider"></div>
-          <h3><i class="fa-solid fa-user" style="color: #F8C933;"> </i><%= @book.author_name %></h3>
-          <h3><i class="fa-regular fa-clock" style="color: #F8C933;"> </i> <%= @book.published_year %></h3>
-          <h3><i class="fa-solid fa-book-open" style="color: #F8C933;"> </i><%= @book.description %></h3>
-          <h3><i class="fa-solid fa-pen-nib" style="color: #F8C933;"></i>   </i><%= @book.category %></h3>
+          <h3><i class="fa-solid fa-user" style="color: #F8C933;"></i><%= @book.author_name %></h3>
+          <h3><i class="fa-regular fa-clock" style="color: #F8C933;"></i> <%= @book.published_year %></h3>
+          <h3><i class="fa-solid fa-pen-nib" style="color: #F8C933;"></i><%= @book.category %></h3>
           <h3 data-calcul-target="price_per_day" data-price-per-day="<%= @book.price_per_day %>">
-            <i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i><%= @book.price_per_day %>€
-          <%= link_to "Book me", "#", class: " btn btn-info m-2"  %>
+            <i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i><%= @book.price_per_day %>€</h3>
+          <h5><%= @book.description %></h5>
+        </div>
+      </div>
+
+      <!-- DIV RIGHT (FORM) -->
+      <div class="col-md-3">
+        <div data-controller="form">
+          <button class="btn btn-info display-form" data-form-target="button" data-action="click->form#display">BOOK NOW!</button>
+
+          <%= simple_form_for [@book, Reservation.new], html: { class: "d-none", data: { form_target: "form" } } do |f| %>
+              <%= f.input :begin_date,
+                          as: :string,
+                          input_html: { data: { controller: "datepicker", calcul_target:"begin_date", action: "change->calcul#refresh" } } %>
+              <%= f.input :end_date,
+                          as: :string,
+                          input_html: { data: { controller: "datepicker", calcul_target:"end_date", action: "change->calcul#refresh" } } %>
+              <%= f.submit "Reserve", class: "btn btn-primary" %>
+              <%# TODO: FAIRE MARCHER LE CALCUL PAR JOUR %>
+              <%# <p><i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i> <span data-target="calcul.total_price"></span> 0€</p> %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="container" data-controller="calcul">
-    <%= simple_form_for([@book, Reservation.new]) do |f| %>
-        <%= f.input :begin_date,
-                    as: :string,
-                    input_html: { data: { controller: "datepicker", calcul_target:"begin_date", action: "change->calcul#refresh" } }%>
-        <%= f.input :end_date,
-                    as: :string,
-                    input_html: { data: { controller: "datepicker", calcul_target:"end_date", action: "change->calcul#refresh" } }%>
-        <%= f.submit class:"btn btn-primary" %>
-    <% end %>
-</div>
-
-
- <div class="container" data-calcul-target>
-  <p><i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i> <span data-target="calcul.total_price"></span> 0€</p>
 </div>
