@@ -17,11 +17,11 @@
         </div>
         <div class="book-info-card">
           <div class="vertical-divider"></div>
-          <h3><i class="fa-solid fa-user" style="color: #F8C933;"></i><%= @book.author_name %></h3>
+          <h3><i class="fa-solid fa-user" style="color: #F8C933;"></i> <%= @book.author_name %></h3>
           <h3><i class="fa-regular fa-clock" style="color: #F8C933;"></i> <%= @book.published_year %></h3>
-          <h3><i class="fa-solid fa-pen-nib" style="color: #F8C933;"></i><%= @book.category %></h3>
+          <h3><i class="fa-solid fa-pen-nib" style="color: #F8C933;"></i> <%= @book.category %></h3>
           <h3 data-calcul-target="price_per_day" data-price-per-day="<%= @book.price_per_day %>">
-            <i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i><%= @book.price_per_day %>€</h3>
+            <i class="fa-solid fa-money-bill-wave" style="color: #F8C933;"></i> <%= @book.price_per_day %>€ per day</h3>
           <h5><%= @book.description %></h5>
         </div>
       </div>
@@ -29,7 +29,7 @@
       <!-- DIV RIGHT (FORM) -->
       <div class="col-md-3">
         <div data-controller="form">
-          <button class="btn btn-info display-form" data-form-target="button" data-action="click->form#display">BOOK NOW!</button>
+          <button class="btn btn-secondary display-form" data-form-target="button" data-action="click->form#display">BOOK NOW!</button>
 
           <%= simple_form_for [@book, Reservation.new], html: { class: "d-none", data: { form_target: "form" } } do |f| %>
               <%= f.input :begin_date,
