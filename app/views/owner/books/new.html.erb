@@ -9,7 +9,7 @@
     <div class="col-md-6 px-3">
       <h3>Add New Book</h3>
 
-      <%= simple_form_for [@book] do |f| %>
+      <%= simple_form_for(@book) do |f| %>
         <%= f.input :title, placeholder: 'Title' %>
         <%= f.input :author_name, placeholder: 'Author' %>
         <%= f.input :description, placeholder: 'Description' %>
