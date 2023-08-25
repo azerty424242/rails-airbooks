@@ -244,6 +244,18 @@ frankenstein.save
 
 puts "Creating reservations..."
 Reservation.new(
+  book:        coding_for_dummies,
+  renter:      bob,
+  begin_date:   "2023-08-01",
+  end_date:     "2023-08-06",
+  total_price: 45,
+  status:     "accepted"
+)
+
+
+
+
+Reservation.new(
   book:       frankenstein,
   renter:      alice,
   begin_date:   "2023-08-22",

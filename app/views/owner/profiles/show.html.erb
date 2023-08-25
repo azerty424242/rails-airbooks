@@ -74,7 +74,7 @@
         <div class="owned-book-card">
           <%= image_tag(book.cover.url, alt: book.title, class: 'book-cover-user') %>
            <h2><%= book.title %></h2>
-          <p> Last date <%= book.reservations.last.end_date unless book.reservations.empty?%> </p>
+          <p><%= book.reservations.last.end_date unless book.reservations.empty?%> </p>
         </div>
       <% end %>
     </div>
