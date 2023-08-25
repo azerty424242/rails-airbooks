@@ -15,8 +15,10 @@
     <!-- Reservations Summary Card -->
     <div class="reservations-summary-card">
       <h3>Reservations Summary <i class="fa-solid fa-check" style="color: #e5c706;"></i></h3>
-      <p>Accepted Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i> <%= current_user.reservations.where(status: 'accepted').count %><br>
-      Refused Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i> <%= current_user.reservations.where(status: 'refused').count %><br>
+      <%# <p>Accepted Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i> <%= current_user.reservations.where(status: 'accepted').count %>
+      <%# Refused Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i> <%= current_user.reservations.where(status: 'refused').count %>
+      <p>Accepted Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i> 3<br>
+      Refused Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i> 4<br>
       Pending Reservations <i class="fa-solid fa-arrow-right" style="color: #e5c706;"></i>  <span>0</span>
       </p>
     </div>
@@ -47,13 +49,14 @@
   </div>
   <div class="owned-books-card">
       <div class="owned-books-grid">
+  <%# ----------INTÉRER SUR LES RÉSERVATIONS PLUTOT QUE LES BOOKS--------------------- %>
         <% @rented_books.each do |book| %>
+          <% last_booking = book.reservations.where(renter: current_user).last %>
           <div class="owned-book-card">
             <%= image_tag(book.cover.url, alt: book.title, class: 'book-cover-user') %>
             <h2><%= book.title %></h2>
-            <p class ="price"> <%= book.price_per_day %> euros</p>
+            <p class ="price"> <%= last_booking.total_price %> euros</p>
             <p>
-                <% last_booking = book.reservations.where(renter: current_user).last %>
                 <%= "From #{last_booking.begin_date} to #{last_booking.end_date}" %>
               </p>
           </div>

@@ -98,7 +98,7 @@ alice_adventure_in_wonderland = Book.new(
   category: "Fantasy",
   published_year: 1865,
   description: "This book by Lewis Carroll is a whimsical journey into a fantastical world where the ordinary rules of logic don't apply. The story follows young Alice, who, upon chasing a white rabbit, finds herself in a realm filled with bizarre creatures, from the enigmatic Cheshire Cat to the tempestuous Queen of Hearts. Beyond its enchanting narrative, the tale challenges readers' perceptions of reality, identity, and societal norms. Laden with riddles, satire, and sharp wit, it serves as both a delightful children's story and a clever critique of Victorian society.",
-  owner: alice,
+  owner: bob,
   price_per_day: 5
 )
 
@@ -261,14 +261,6 @@ Reservation.new(
   status:     "refused"
 )
 
-Reservation.new(
-  book:        pride_and_prejudice,
-  renter:      alice,
-  begin_date:   "2023-08-07",
-  end_date:     "2023-08-13",
-  total_price: 54,
-  status:     "accepted"
-)
 
 
 Reservation.new(
